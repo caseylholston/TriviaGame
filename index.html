@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"></meta>
+	<title>Trivia Game Dude</title>
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- jQuery Script -->
+	<script
+			  src="https://code.jquery.com/jquery-3.1.1.min.js"
+			  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+			  crossorigin="anonymous"></script>
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+	<script src="assets/javascript/game.js"></script>
+
+	<link href="https://fonts.googleapis.com/css?family=MedievalSharp" rel="stylesheet">
+	
+	<!-- Enhanced CSS Stylesheet -->
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	
+	
+</head>
+<body>
+
+	<!-- Hero Area -->
+	<div class="jumbotron">
+	    <h1 class="text-center">Enter The Trivia Dome!</h1>
+	    <h3 class="text-center">Start the quiz if you dare.</h3>
+		<div class="text-center">
+	        <button class="btn btn-warning btn-xs theme-button"><span class="glyphicon glyphicon-music"></span> Play Theme!</button>
+	        <button class="btn btn-default btn-xs pause-button"><span class="glyphicon glyphicon-pause"></span> Pause Song</button>
+	    </div>
+	    <br>
+	    <p>You will have 20 seconds to answer the question.<p>
+    </div>
+
+	<div class="container">
+		<!-- This starts the question row 1 -->
+    	<div class="row">
+    		<div class="col-lg-10 col-lg-offset-1">
+            	<div class="panel panel-default">
+  				<div class="panel-body">
+  					<!-- Start Timer Row-->
+					<div class="row">
+						<!-- Start Timer Column-->
+						<div class="col-lg-12" id="timer">
+							This is where the timer will go
+						<!-- End Question Column-->
+						</div>
+					<!-- End Timer Row-->
+					<!-- Start Question Row-->
+					<div class="row">
+						<!-- Start Question Column-->
+						<div class="col-lg-12" id="question">
+							This is where the question will go
+						<!-- End Question Column-->
+						</div>
+					<!-- End Question Row-->
+					</div>
+					<!-- Start Answers Row-->
+					<div class="row">
+						<!-- Start Answer Column-->
+						<div class="col-lg-12" id="answers">
+							This is where the Answer will go
+						<!-- End Answer Column-->
+						</div>
+					<!-- End Answer Row-->
+					</div>
+				<!-- Ends Panel Body -->
+				</div>
+    			<!-- Ends Panel -->
+    			</div>
+    		<!-- Ends Column 1 -->
+    		</div>
+    	<!-- Ends Question Row-->
+    	</div>
+		<!-- Starts Answer Aftermath Row 2 -->
+		<div class="row">
+			<!-- Starts Column 1 -->
+    		<div class="col-lg-10 col-lg-offset-1" id="attacker">
+    			<!-- Starts Aftermath Panel -->
+            	<div class="panel panel-default">
+            	<!-- Starts Aftermath Panel Body -->
+  				<div class="panel-body activeName">
+    				<!-- Was the correct answer selected or not Span-->
+					<span id= "correct wrong">
+	    				Answer Aftermath
+					<!-- End Span-->
+					</span>
+    			<!-- Ends Panel Body -->
+				</div>
+    			<!-- Ends Panel -->
+    			</div>
+	    		<!-- Ends Column 1 -->
+	    	</div>
+    	<!-- Ends Row 2-->
+    	</div>
+</body>
+</html>
