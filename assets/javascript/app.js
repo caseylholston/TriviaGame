@@ -17,9 +17,9 @@ var triviaStatus = {startTimer:function run() {
 								      //  Show the number in the #show-number tag.
 								      $("#timer").html("<h2>" + countdownTimer + "</h2>");
 								      //  Once number hits zero...
-								      if (countdownTimer === 0) {
+								      if (countdownTimer === 0 ) {
 								        //  ...run the stop function.
-								        stop();
+								        triviaStatus.stopTimer();
 								        //  Alert the user that time is up.
 								        alert("Time Up!");
 								      }
