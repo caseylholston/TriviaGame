@@ -5,12 +5,13 @@ $(document).ready(function(){
 var countdownTimer = 100;
 //  Variable that will hold our interval ID when we execute the "run" function
 var intervalId;
+var numberCorrect =0;
 
 var content = { questions: {one:['Who shot John F. Kennedy?'],
 							two:['What is 2+2'],
 							},
-				possibleAnswers: { one:['<input type ="radio" name="answer1a" value="Rafael Cruz" id="1a">Rafael Cruz', '<input type ="radio"  name="answer1b" value="The CIA" id ="1b">The CIA', 
-										'<input type ="radio" name="answer1c" value="Lee Harvey Oswald" id ="1c">Lee Harvey Oswald', '<input type ="radio" name="answer1d" value="Jack Ruby" id ="1d">Jack Ruby'],
+				possibleAnswers: { one:['<input type ="radio" name="answers" value="Rafael Cruz" id="1a">Rafael Cruz', '<input type ="radio"  name="answers" value="The CIA" id ="1b">The CIA', 
+										'<input type ="radio" name="answers" value="Lee Harvey Oswald" id ="1c">Lee Harvey Oswald', '<input type ="radio" name="answers" value="Jack Ruby" id ="1d">Jack Ruby'],
 						   		   two:['<input type ="radio" value="1" id="2a">1','<input type ="radio" value="1" id="2b">2',
 						   		   		'<input type ="radio" value="3" id="2c">3','<input type ="radio" value="4" id="2d">4'],
 								} ,
@@ -58,12 +59,29 @@ var triviaStatus = {startTimer:function run() {
     	$(this).hide();
     	$('#question').html(content.questions.one);
     	//$('#answers').html('<form onSubmit="triviaStatus.captureForm()">' + content.possibleAnswers.one + '<input type="submit" value="Submit">' + '</form>');
-    	$('#answers').html('<form id=answerOptions>' + content.possibleAnswers.one + '</form>');
+    	$('#answers').html('<form id=answerOptions>' + content.possibleAnswers.one + '</form');
 	});
-    	$('#answerOptions input').on('change' function() {
-    		console.log($(this));
-  			alert($('input[type="radio"]:checked', '#answerOptions').val());
-  			
+	$(document).on('change', 'input[type=radio][name=answers]', function(){
+
+			if ('input[type="radio"][name=answers]:checked') {
+				content.playerAnswers.one = $('input[type=radio][name=answers]:checked').attr('id');
+				if( content.playerAnswers.one == content.correctAnswers.one) {
+					console.log('you are correct');
+					numberCorrect++
+				}
+				else {
+					console.log('you are wrong')
+				}
+
+			console.log($('input[type=radio][name=answers]:checked'));
+		}
+	});
+    	//if ('input[type="radio"]:checked') {}
+    	
+    // 	$('input[type=radio][name=answers]').change(function() {
+  		// 	console.log("I was pressed");
+  		// 	//alert($('input[name="answers"]:checked').val());
+  		// });
 
   //   		var playerAnswer = $('input[name="answers"]:checked', '#answerOptions').val();
   //   		if(playerAnswer = content.playerAnswers.one ) {
@@ -75,7 +93,7 @@ var triviaStatus = {startTimer:function run() {
 		// }
     	
 
-    	});
+    
 		
 
 
@@ -92,5 +110,5 @@ var triviaStatus = {startTimer:function run() {
 
 
 
-// End Doucment Ready Funtion
+// End Doucment Ready Function
 });
