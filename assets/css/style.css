@@ -10,9 +10,19 @@
 	text-align: center;
 }
 
+#submit {
+	text-align: center;
+}
+
 #correct  {
 	text-align: center;
 }
 #wrong {
 	text-align: center;
+}
+
+ul {
+	list-style-type: none;
+	text-align: left;
+	margin-left: 30%;
 }
