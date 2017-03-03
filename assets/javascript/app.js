@@ -9,14 +9,17 @@ var questionIndex =0;
 var answerIndex =0;
 var correctIndex =0;
 var numberCorrect =0;
+var playerAnswerIndex = 0;
 $('#nextQuestion').hide();
+$('#scoreKeeper').empty();
+//$('#scoreKeeper').html("You have answered " + numberCorrect + " questions correctly");
 
 var content = { questions:['Who shot John F. Kennedy?', 'What is 2+2']
 							,
 				possibleAnswers: [['<ul><li><input type ="radio" name="answers" value="Rafael Cruz" id="1a"> Rafael Cruz</li>', '<li><input type ="radio"  name="answers" value="The CIA" id ="1b"> The CIA</li>', 
 										'<li><input type ="radio" name="answers" value="Lee Harvey Oswald" id ="1c"> Lee Harvey Oswald</li>', '<li><input type ="radio" name="answers" value="Jack Ruby" id ="1d"> Jack Ruby</li></ul>'],
-						   		 ['<input type ="radio" value="1" id="2a">1','<input type ="radio" value="1" id="2b">2',
-						   		   		'<input type ="radio" value="3" id="2c">3','<input type ="radio" value="4" id="2d">4'],
+						   		 ['<input type ="radio" name="answers" value="1" id="2a"> 1','<input type ="radio" name="answers" value="1" id="2b"> 2',
+						   		  '<input type ="radio" name="answers" value="3" id="2c"> 3','<input type ="radio" name="answers" value="4" id="2d"> 4'],
 								],
 				correctAnswers: ['1c','2d'
 								],
@@ -56,49 +59,54 @@ var triviaStatus = {startTimer:function run() {
 
 						};
     //  Execute the run function.
-    $('#startQuiz').on('click', function () {
+    	$('#startQuiz').on('click', function () {
     	triviaStatus.startTimer();
     	$(this).hide();
     	$('#question').html(content.questions[questionIndex] + "<br><br>");
     	//$('#answers').html('<form onSubmit="triviaStatus.captureForm()">' + content.possibleAnswers.one + '<input type="submit" value="Submit">' + '</form>');
     	$('#answers').html('<form id=answerOptions>' + content.possibleAnswers[answerIndex].join('<br><br>') + '</form');
 	});
+
+
 	$(document).on('change', 'input[type=radio][name=answers]', function(){
-				questionIndex++
-				answerIndex++
+				questionIndex++;
+				answerIndex++;
 			if ('input[type="radio"][name=answers]:checked')  {
-				content.playerAnswers.one = $('input[type=radio][name=answers]:checked').attr('id');
-				if( content.playerAnswers.one == content.correctAnswers[correctIndex]) {
-					console.log('you are correct');
+				content.playerAnswers[playerAnswerIndex] = $('input[type=radio][name=answers]:checked').attr('id');
+				if( content.playerAnswers[playerAnswerIndex] == content.correctAnswers[correctIndex]) {
+					alert('You have chosen wisely');
+					numberCorrect++;
+					console.log("Number Correct" + numberCorrect)
 					triviaStatus.stopTimer();
 					triviaStatus.resetTimer();
-					numberCorrect++
 					$('#nextQuestion').show();
+					$('#scoreKeeper').html("You have answered " + numberCorrect + " questions correctly");
 				}
 				else {
-					console.log('you are wrong')
+					alert('You have chosen poorly');
 					triviaStatus.stopTimer();
 					triviaStatus.resetTimer();
 					clearInterval(intervalId);
 					$('#nextQuestion').show();
-
+					$('#scoreKeeper').html("You have answered " + numberCorrect + " questions correctly");
 				}
 		};
 
 	
 	});
 
-
-	$('#nextQuestion').on('click', function (){
+		$('#nextQuestion').on('click', function (){
 		console.log("Next Question Function to Run");
+		console.log(answerIndex);
+		playerAnswerIndex++;
+		correctIndex++;
 		$('#nextQuestion').hide();
-		
 		triviaStatus.startTimer();
 		$('#question').html(content.questions[questionIndex] + "<br><br>");
 		$('#answers').html('<form id=answerOptions>' + content.possibleAnswers[answerIndex].join('<br><br>') + '</form');
 
-
 	});
+
     	//if ('input[type="radio"]:checked') {}
     	
     // 	$('input[type=radio][name=answers]').change(function() {
