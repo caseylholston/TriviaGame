@@ -96,7 +96,7 @@ var triviaStatus = {startTimer:function run() {
     	$('#startQuiz').on('click', function () {
     	triviaStatus.startTimer();
     	$(this).hide();
-    	$('#question').html(content.questions[questionIndex] + "<br><br>");
+    	$('#question').html(content.questions[questionIndex] + '<br><br>');
     	//$('#answers').html('<form onSubmit="triviaStatus.captureForm()">' + content.possibleAnswers.one + '<input type="submit" value="Submit">' + '</form>');
     	$('#answers').html('<form id=answerOptions>' + content.possibleAnswers[answerIndex].join('<br><br>') + '</form');
 	});
@@ -130,15 +130,24 @@ var triviaStatus = {startTimer:function run() {
 				}
 			 
 			};
+		checkAnswers();
 	});
 
 
 
+        function checkAnswers () {
         if (content.playerAnswers.length == 10) {
 			var numberIncorrect = (10-numberCorrect);
-			('#results').html('You have chosen wisely ' + numberCorrect + ' times!') //'<br><br>' '&' '<br><br>''You have chosen poorly ' + numberIncorrect + ' times!');
-			('#restart').show();
-			}	
+			triviaStatus.stopTimer();
+			$('#timer').hide();
+			$('#submit').hide();
+			$('#question').hide();
+			$('#answers').hide();
+			$('#restart').show();
+			$('#results').html('You have chosen wisely ' + numberCorrect + ' times! <br><br> and <br><br> You have chosen poorly ' + numberIncorrect + ' times!');
+			
+			}
+			};	
 
 		$('#nextQuestion').on('click', function (){
 		console.log("Next Question Function to Run");

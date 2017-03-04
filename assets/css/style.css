@@ -6,6 +6,10 @@
 	text-align: center;
 }
 
+#restart {
+	text-align: center;
+}
+
 #answers {
 	text-align: center;
 }
@@ -17,6 +21,10 @@
 .panel {
 	background: none;
 	border: none;
+}
+
+#results {
+	text-align: center;
 }
 
 #correct  {
