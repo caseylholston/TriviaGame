@@ -4,6 +4,7 @@ $(document).ready(function(){
 //  Set our timer counter to 20.
 var countdownTimer = 20;
 //  Variable that will hold our interval ID when we execute the "run" function
+
 var intervalId;
 var questionIndex =0;
 var answerIndex =0;
@@ -14,6 +15,10 @@ $('#nextQuestion').hide();
 $('#scoreKeeper').empty();
 $('#correct').empty();
 $('#wrong').empty();
+$('#restart').hide();
+
+
+
 //$('#scoreKeeper').html("You have answered " + numberCorrect + " questions correctly");
 
 var content = { questions:['What NBA franchise has won the most titles?', 
@@ -102,6 +107,7 @@ var triviaStatus = {startTimer:function run() {
 				answerIndex++;
 			if ('input[type="radio"][name=answers]:checked')  {
 				content.playerAnswers[playerAnswerIndex] = $('input[type=radio][name=answers]:checked').attr('id');
+				console.log('Player answer length' + content.playerAnswers.length);
 				if( content.playerAnswers[playerAnswerIndex] == content.correctAnswers[correctIndex]) {
 					alert('You have chosen wisely');
 					$('#correct').html('<img src="../TriviaGame/assets/images/yes.gif"/>');
@@ -112,6 +118,7 @@ var triviaStatus = {startTimer:function run() {
 					$('#nextQuestion').show();
 					$('#scoreKeeper').html("You have answered " + numberCorrect + " questions correctly");
 				}
+
 				else {
 					alert('You have chosen poorly -- The correct answer was' + content.correctAnswers[correctIndex] );
 					$('#wrong').html('<img src="../TriviaGame/assets/images/kanyeno.gif"/>');
@@ -121,10 +128,17 @@ var triviaStatus = {startTimer:function run() {
 					$('#nextQuestion').show();
 					$('#scoreKeeper').html("You have answered " + numberCorrect + " questions correctly");
 				}
-		};
-
-	
+			 
+			};
 	});
+
+
+
+        if (content.playerAnswers.length == 10) {
+			var numberIncorrect = (10-numberCorrect);
+			('#results').html('You have chosen wisely ' + numberCorrect + ' times!') //'<br><br>' '&' '<br><br>''You have chosen poorly ' + numberIncorrect + ' times!');
+			('#restart').show();
+			}	
 
 		$('#nextQuestion').on('click', function (){
 		console.log("Next Question Function to Run");
@@ -141,6 +155,11 @@ var triviaStatus = {startTimer:function run() {
 	});
 
 
+		$('#restart').on('click',function() {
+                        initial();
+                        
+               //End Initial Function on restart click
+          });
 
 // End Doucment Ready Function
 });
