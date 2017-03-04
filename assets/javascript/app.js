@@ -1,9 +1,11 @@
 // Initialize the JS file
 $(document).ready(function(){
-
+initial();
+function initial() {
 //  Set our timer counter to 20.
 var countdownTimer = 20;
 //  Variable that will hold our interval ID when we execute the "run" function
+
 
 var intervalId;
 var questionIndex =0;
@@ -16,6 +18,7 @@ $('#scoreKeeper').empty();
 $('#correct').empty();
 $('#wrong').empty();
 $('#restart').hide();
+
 
 
 
@@ -92,6 +95,7 @@ var triviaStatus = {startTimer:function run() {
 								    },
 
 						};
+
     //  Execute the run function.
     	$('#startQuiz').on('click', function () {
     	triviaStatus.startTimer();
@@ -162,9 +166,10 @@ var triviaStatus = {startTimer:function run() {
 		$('#answers').html('<form id=answerOptions>' + content.possibleAnswers[answerIndex].join('<br><br>') + '</form');
 
 	});
-
-
+//End Initial
+};
 		$('#restart').on('click',function() {
+			console.log("I clicked Restart");
                         initial();
                         
                //End Initial Function on restart click
